@@ -8,13 +8,19 @@ interface User {
    * - 'user'
    * - 'super-admin'
    */
-  role: string;
+  // this is a union type::
+  role: Role;
 }
+type Role = "admin" | "user" | SuperAdmin | { wow: boolean };
+
+type SuperAdmin = "super-admin";
 
 export const defaultUser: User = {
   id: 1,
   firstName: "Matt",
   lastName: "Pocock",
-  // @ts-expect-error
-  role: "I_SHOULD_NOT_BE_ALLOWED",
+  // // @ts-expect-error
+  // role: "I_SHOULD_NOT_BE_ALLOWED",
+  role: "super-admin",
+  // role: { wow: true },
 };

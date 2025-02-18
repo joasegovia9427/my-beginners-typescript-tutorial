@@ -1,6 +1,7 @@
 import { expect, it } from "vitest";
 
-export const getName = (params: { first: string; last: string }) => {
+// export const getName = (params: { first: string; last: string | undefined }) => {
+export const getName = (params: { first: string; last?: string }) => {
   if (params.last) {
     return `${params.first} ${params.last}`;
   }
@@ -10,6 +11,7 @@ export const getName = (params: { first: string; last: string }) => {
 it("Should work with just the first name", () => {
   const name = getName({
     first: "Matt",
+    // last: undefined,
   });
 
   expect(name).toEqual("Matt");
