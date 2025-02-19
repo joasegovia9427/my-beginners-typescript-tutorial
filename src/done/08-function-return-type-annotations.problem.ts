@@ -4,22 +4,49 @@ interface User {
   id: number;
   firstName: string;
   lastName: string;
-  role: "admin" | "user" | "super-admin";
+  role: Role;
   posts: Array<Post>;
 }
+
+type Role = "admin" | "user" | "super-admin";
 
 interface Post {
   id: number;
   title: string;
 }
 
+const userToReturn: User = {
+  id: 1,
+  firstName: "Matt",
+  lastName: "Pocock",
+  role: "user",
+  posts: [
+    {
+      id: 1,
+      title: "How I eat so much cheese",
+    },
+  ],
+};
+
 /**
  * How do we ensure that makeUser ALWAYS
  * returns a user?
  */
-const makeUser = () => {
-  return {};
-};
+const makeUser = (): User => userToReturn;
+// const makeUser = (): User => {
+//   return {
+//     id: 1,
+//     firstName: "Matt",
+//     lastName: "Pocock",
+//     role: "super-admin",
+//     posts: [
+//       {
+//         id: 1,
+//         title: "How I eat so much cheese",
+//       },
+//     ],
+//   };
+// };
 
 it("Should return a valid user", () => {
   const user = makeUser();
