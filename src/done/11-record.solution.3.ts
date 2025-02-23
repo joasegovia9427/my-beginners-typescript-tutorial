@@ -1,8 +1,9 @@
 import { expect, it } from "vitest";
 
-interface Cache {
+// interface Cache {
+type Cache = {
   [id: string]: string;
-}
+};
 
 const createCache = () => {
   const cache: Cache = {};
